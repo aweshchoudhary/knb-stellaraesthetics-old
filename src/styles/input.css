@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+html.darkMode:root {
+  --primary: #571168;
+  --text-color: #ffffff;
+  --paper: rgb(40, 40, 40);
+  --background: #343434;
+  --border-color: rgb(102, 102, 102);
+}
+html:root {
+  --primary: #571168;
+  --text-color: #000000;
+  --paper: rgb(247, 247, 247);
+  --background: #fff;
+  --border-color: rgb(218, 218, 218);
+}
+
+* {
+  /* transition: all 0.2s ease; */
+  accent-color: var(--primary);
+  border-color: var(--border-color);
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+  background: var(--background);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #555;
+}
+
+.btn-filled {
+  @apply capitalize border border-primary px-4 py-2 text-white flex items-center gap-2 bg-primary rounded hover:opacity-80 transition;
+}
+.btn-outlined {
+  @apply px-4 py-2 text-textColor flex items-center gap-2 border rounded capitalize hover:bg-paper transition;
+}
+.input {
+  @apply border bg-transparent px-3 py-2 rounded w-full outline-none;
+}
+
+@tailwind utilities;
