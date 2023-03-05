@@ -22,6 +22,12 @@ const Kanban = () => {
       const stage = stageArr[0];
       const numOfDeals = stage.deals + 1;
       const amount = stage.amount + deals[source.index].value.value;
+
+      const copiedItems = [...deals];
+      const [removed] = copiedItems.splice(destination.index, 1);
+      copiedItems.splice(source.index, 0, removed);
+      dispatch(reorderDeals(copiedItems));
+
       dispatch(
         setStage({ id: deals[source.index].id, stage: destination.droppableId })
       );

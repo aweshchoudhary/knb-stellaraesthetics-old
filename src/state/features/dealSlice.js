@@ -44,27 +44,6 @@ const initialState = {
         prefix: "+91",
       },
     },
-    {
-      id: "152345",
-      personName: "Awesh Choudhary",
-      organization: "Stellar Aesthetics",
-      title: "Stellar Aesthetics Deal",
-      value: {
-        value: 10000,
-        type: "inr",
-      },
-      stage: "stage-1",
-      label: 12341234,
-      email: {
-        email: "aweshchoudhary7@gmail.com",
-        type: "work",
-      },
-      phone: {
-        phone: 9015077510,
-        type: "work",
-        prefix: "+91",
-      },
-    },
   ],
 };
 
