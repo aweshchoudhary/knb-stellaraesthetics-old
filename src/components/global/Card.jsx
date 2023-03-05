@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
   return data ? (

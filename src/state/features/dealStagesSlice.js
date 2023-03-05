@@ -34,7 +34,12 @@ const dealStageSlice = createSlice({
   initialState,
   reducers: {
     addDealStage: (state, action) => {
-      state.data.push(action.payload);
+      const stagesCopy = [...state.data];
+      stagesCopy.splice(action.payload.index + 1, 0, {
+        id: String(Date.now()),
+        name: action.payload.name,
+      });
+      state.data = stagesCopy;
     },
     deleteDealStage: (state, action) => {
       const data = state.data.filter((item) => action.payload !== item.id);
@@ -49,9 +54,12 @@ const dealStageSlice = createSlice({
         }
       });
     },
+    reorderStages: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
-export const { addDealStage, deleteDealStage, updateDealStage } =
+export const { addDealStage, deleteDealStage, updateDealStage, reorderStages } =
   dealStageSlice.actions;
 export default dealStageSlice.reducer;
