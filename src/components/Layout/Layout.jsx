@@ -5,7 +5,6 @@ import SideBar from "../global/SideBar";
 
 const Layout = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
-
   const darkMode = useSelector((state) => state.global.darkMode);
   useEffect(() => {
     Boolean(darkMode)
@@ -14,14 +13,19 @@ const Layout = () => {
       : document.documentElement.classList.remove("darkMode");
   }, [darkMode]);
   return (
-    <div className="flex relative">
+    <div className="flex relative w-screen">
       <SideBar setIsOpen={setIsSideBarOpen} isOpen={isSideBarOpen} />
       <main
-        style={{
-          width: isSideBarOpen ? "calc(100% - 300px)" : "calc(100% - 90px)",
-        }}
+        className={
+          isSideBarOpen
+            ? "md:w-[calc(100%-300px)] w-screen"
+            : "md:w-[calc(100%-90px)] w-screen"
+        }
+        // style={{
+        //   width: isSideBarOpen ? "calc(100% - 300px)" : "calc(100% - 90px)",
+        // }}
       >
-        <article className="h-screen overflow-y-auto">
+        <article className="h-screen w-full overflow-y-auto">
           <Outlet />
         </article>
       </main>

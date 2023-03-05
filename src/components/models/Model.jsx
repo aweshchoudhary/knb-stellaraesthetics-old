@@ -4,7 +4,7 @@ const Model = ({ children, isOpen, setIsOpen }) => {
   return (
     isOpen && (
       <>
-        <div className="w-1/2 h-screen fixed bg-bg z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="lg:w-1/2 md:w-[70%] sm:w-4/5 w-full h-screen fixed bg-bg z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <header className="bg-primary text-white flex items-center justify-between h-[10%] py-3 px-5">
             <h4 className="title text-2xl font-semibold">Add Deal</h4>
             <button

@@ -2,11 +2,12 @@ import { Icon } from "@iconify/react";
 import { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addDeal } from "../../state/features/dealSlice";
 
 const AddDeal = ({ setIsOpen }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const stages = useSelector((state) => state.dealStages.data);
   const dispatch = useDispatch();
 
   const [dealData, setDealData] = useState({
@@ -29,6 +30,7 @@ const AddDeal = ({ setIsOpen }) => {
       type: "work",
       prefix: "+91",
     },
+    closeDate: new Date(),
   });
   const colors = useRef([
     "red-500",
@@ -45,9 +47,9 @@ const AddDeal = ({ setIsOpen }) => {
   return (
     <>
       <div className="overflow-y-auto h-[80%]">
-        <form className="container flex">
-          <div className="w-1/2 shrink-0 border-r h-full p-3">
-            <div className="input-group mb-3">
+        <form className="container sm:flex">
+          <div className="sm:w-1/2 shrink-0 border-r h-full p-3">
+            <div className="input-fname mb-3">
               <label
                 htmlFor="personName"
                 className="text-textColor block  mb-2"
@@ -70,7 +72,7 @@ const AddDeal = ({ setIsOpen }) => {
                 }
               />
             </div>
-            <div className="input-group mb-3">
+            <div className="input-organization mb-3">
               <label
                 htmlFor="organization"
                 className="text-textColor block mb-2"
@@ -93,7 +95,7 @@ const AddDeal = ({ setIsOpen }) => {
                 }
               />
             </div>
-            <div className="input-group mb-3">
+            <div className="input-title mb-3">
               <label htmlFor="title" className="text-textColor block  mb-2">
                 Title
               </label>
@@ -113,7 +115,7 @@ const AddDeal = ({ setIsOpen }) => {
                 }
               />
             </div>
-            <div className="input-group mb-3">
+            <div className="input-value mb-3">
               <label
                 htmlFor="amount-value"
                 className="text-textColor block mb-2"
@@ -154,7 +156,7 @@ const AddDeal = ({ setIsOpen }) => {
                     })
                   }
                 >
-                  <option className="text-black" value="inr">
+                  <option selected className="text-black" value="inr">
                     Indian Rupee
                   </option>
                   <option className="text-black" value="dollar">
@@ -166,14 +168,14 @@ const AddDeal = ({ setIsOpen }) => {
                 </select>
               </div>
             </div>
-            <div className="input-group mb-3">
+            <div className="input-stage mb-3">
               <label htmlFor="stage" className="text-textColor block mb-2">
                 Stage
               </label>
               <select
                 name="stage"
                 id="stage"
-                className="input"
+                className="input capitalize"
                 onChange={(e) =>
                   setDealData((prev) => {
                     return {
@@ -183,31 +185,19 @@ const AddDeal = ({ setIsOpen }) => {
                   })
                 }
               >
-                <option
-                  className="text-black"
-                  defaultValue={"stage-1"}
-                  selected
-                >
+                <option className="text-black" value={"stage-1"} selected>
                   Select Stage
                 </option>
-                <option className="text-black" value="stage-1">
-                  Requested
-                </option>
-                <option className="text-black" value="stage-2">
-                  Todo
-                </option>
-                <option className="text-black" value="stage-3">
-                  In Progress
-                </option>
-                <option className="text-black" value="stage-4">
-                  done
-                </option>
-                <option className="text-black" value="stage-5">
-                  Cancelled
-                </option>
+                {stages.map((item, i) => {
+                  return (
+                    <option key={i} className="text-black" value={item.id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
-            <div className="input-group mb-3 flex items-center gap-1">
+            <div className="input-color mb-3 flex items-center gap-1">
               {colors.current.map((item, i) => {
                 return (
                   <button
@@ -218,33 +208,33 @@ const AddDeal = ({ setIsOpen }) => {
                 );
               })}
             </div>
-            <div className="input-group mb-3">
+            <div className="input-close-date mb-3">
               <label htmlFor="close-date" className="text-textColor block mb-2">
                 Expected Close Date
               </label>
               <DatePicker
-                selected={startDate}
-                // onChange={(date) =>
-                //   setDealData((prev) => {
-                //     return {
-                //       ...prev,
-                //       date: date,
-                //     };
-                //   })
-                // }
-                // onSelect={(date) =>
-                //   setDealData((prev) => {
-                //     return {
-                //       ...prev,
-                //       date: date,
-                //     };
-                //   })
-                // }
+                selected={dealData.closeDate}
+                onChange={(date) =>
+                  setDealData((prev) => {
+                    return {
+                      ...prev,
+                      closeDate: date,
+                    };
+                  })
+                }
+                onSelect={(date) =>
+                  setDealData((prev) => {
+                    return {
+                      ...prev,
+                      closeDate: date,
+                    };
+                  })
+                }
                 className="input cursor-pointer"
               />
             </div>
           </div>
-          <div className="w-1/2 shrink-0 h-full p-3">
+          <div className="sm:w-1/2 shrink-0 h-full p-3">
             <div className="input-group mb-3">
               <label
                 htmlFor="personName"
