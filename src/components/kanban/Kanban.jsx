@@ -34,11 +34,9 @@ const Kanban = () => {
           ],
         })
       );
-    }
-
-    // Else part for above if needed in future
-    else {
-      const [removed] = deals.splice(source.index, 1);
+    } else {
+      const copiedItems = [...deals];
+      const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
       dispatch(reorderDeals(copiedItems));
     }

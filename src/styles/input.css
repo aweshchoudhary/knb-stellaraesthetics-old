@@ -5,14 +5,14 @@
 html.darkMode:root {
   --primary: #571168;
   --text-color: #ffffff;
-  --paper: rgb(40, 40, 40);
-  --background: #343434;
-  --border-color: rgb(102, 102, 102);
+  --paper: rgb(59, 59, 59);
+  --background: #212121;
+  --border-color: rgb(98, 98, 98);
 }
 html:root {
   --primary: #571168;
   --text-color: #000000;
-  --paper: rgb(247, 247, 247);
+  --paper: rgb(236, 236, 236);
   --background: #fff;
   --border-color: rgb(218, 218, 218);
 }

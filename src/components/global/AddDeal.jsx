@@ -8,6 +8,7 @@ import { addDeal } from "../../state/features/dealSlice";
 const AddDeal = ({ setIsOpen }) => {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
+
   const [dealData, setDealData] = useState({
     id: String(Date.now()),
     personName: null,
@@ -29,24 +30,18 @@ const AddDeal = ({ setIsOpen }) => {
       prefix: "+91",
     },
   });
-  const [currentLabelData, setCurrentLabelData] = useState(null);
-  const [openLabelList, setOpenLabelList] = useState(false);
-  const [openLabelModel, setOpenLabelModel] = useState(false);
   const colors = useRef([
-    "#571168",
-    "#EAB308",
-    "#EF4444",
-    "#22C55E",
-    "#000000",
+    "red-500",
+    "yellow-500",
+    "green-500",
+    "purple-500",
+    "primary",
   ]);
-  const [labelActiveColor, setLabelActiveColor] = useState("");
-
   function addNewDeal() {
     dispatch(addDeal(dealData));
     setIsOpen(false);
   }
 
-  useEffect(() => {}, [dealData.label]);
   return (
     <>
       <div className="overflow-y-auto h-[80%]">
@@ -211,6 +206,17 @@ const AddDeal = ({ setIsOpen }) => {
                   Cancelled
                 </option>
               </select>
+            </div>
+            <div className="input-group mb-3 flex items-center gap-1">
+              {colors.current.map((item, i) => {
+                return (
+                  <button
+                    key={i}
+                    className={`w-[40px] h-[40px] hover:border-2 border-black rounded-full bg-${item}`}
+                    type="button"
+                  ></button>
+                );
+              })}
             </div>
             <div className="input-group mb-3">
               <label htmlFor="close-date" className="text-textColor block mb-2">
