@@ -57,7 +57,7 @@ const Kanban = ({ setIsKanBanEdit }) => {
         <AddDeal setIsOpen={setModelOpen} />
       </Model>
       <section className="h-[60px] flex items-center justify-between px-5 py-3 border-b">
-        <div className="">
+        <div>
           <button onClick={() => setModelOpen(true)} className="btn-filled">
             <Icon icon={"uil:plus"} className="text-xl" />
             Deal
@@ -134,15 +134,16 @@ const Kanban = ({ setIsKanBanEdit }) => {
                                           <div
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
                                             className="relative"
                                           >
                                             <Card data={item} />
-                                            <button
+                                            {/* <button
                                               {...provided.dragHandleProps}
                                               className="cursor-move text-2xl absolute top-1 right-1 hover:bg-paper p-2 rounded-full"
                                             >
                                               <Icon icon="mdi:cursor-move" />
-                                            </button>
+                                            </button> */}
                                           </div>
                                         );
                                       }}
