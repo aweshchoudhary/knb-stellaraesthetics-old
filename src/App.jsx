@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout/Layout";
@@ -19,12 +19,12 @@ const App = () => {
     onSignIn: async (response) => {
       dispatch(setAuthenticatedUser(true));
       dispatch(setUser(response.profile));
-      window.location.hash = ""
+      window.location.hash = "";
     },
-    authority: "https://au.stellaraesthetics.in/", // replace with your instance
+    authority: "https://au.stellaraesthetics.in/",
     clientId: "206769574157323753@authentication_with_react",
     responseType: "code",
-    redirectUri: "http://localhost:5173/dashboard",
+    redirectUri: "https://knb-stellaraesthetics.netlify.app/dashboard",
     scope: "openid profile email",
   };
   return (
