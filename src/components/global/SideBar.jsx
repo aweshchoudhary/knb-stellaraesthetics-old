@@ -43,17 +43,21 @@ const SideBar = ({ setIsOpen, isOpen }) => {
   const [active, setActive] = useState({});
   return (
     <aside
-      className={`${isOpen ? "w-[300px]" : "md:w-[90px] w-[300px]"} ${
+      className={`${isOpen ? "w-[250px]" : "md:w-[90px] w-[300px]"} ${
         isMobileOpen ? "left-0" : "md:left-0 -left-full"
       } border-r md:sticky absolute bg-bg z-50 top-0 left-0 h-screen shrink-0 transition-all`}
     >
-      <header className="flex items-center justify-between p-5 border-b bg-primary text-white">
+      <header
+        className={`${
+          isOpen ? "gap-2" : "gap-0"
+        } flex items-center justify-between p-5 border-b bg-primary text-white`}
+      >
         {isOpen && (
-          <h4 className="text-xl font-semibold">Stellar Aesthetics</h4>
+          <h4 className="text-lg font-semibold">Stellar Aesthetics</h4>
         )}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="text-3xl md:block hidden rounded-full p-2 hover:bg-gray-500"
+          className="text-2xl md:block hidden rounded-full m-0 p-1 hover:bg-slate-800"
         >
           <Icon
             icon={

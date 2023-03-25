@@ -23,12 +23,12 @@ const EditKanban = ({ setIsKanBanEdit }) => {
     setCurrentStages(arr);
   };
   function addStage(index) {
-    const stagesCopy = [...currentStages.data];
+    const stagesCopy = [...currentStages];
     stagesCopy.splice(index + 1, 0, {
       id: String(Date.now()),
       name: "new stage",
     });
-    state.data = stagesCopy;
+    // state.data = stagesCopy;
     setCurrentStages(stagesCopy);
   }
   function handleKanBanSave() {

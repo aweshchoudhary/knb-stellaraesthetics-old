@@ -18,7 +18,7 @@ const Layout = () => {
       <main
         className={
           isSideBarOpen
-            ? "md:w-[calc(100%-300px)] w-screen"
+            ? "md:w-[calc(100%-250px)] w-screen"
             : "md:w-[calc(100%-90px)] w-screen"
         }
         // style={{

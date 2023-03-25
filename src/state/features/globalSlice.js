@@ -9,11 +9,11 @@ const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
-    toggleDarkMode: (state) => {
+    toggleDarkMode(state) {
       state.darkMode = !state.darkMode;
       localStorage.setItem("darkMode", state.darkMode);
     },
-    toggleMobileOpen: (state) => {
+    toggleMobileOpen(state) {
       state.isMobileOpen = !state.isMobileOpen;
     },
   },

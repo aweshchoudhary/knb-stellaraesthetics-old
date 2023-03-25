@@ -1,4 +1,4 @@
-import ProductTable from "../components/tables/productTable";
+import ProductTable from "../components/tables/ProductTable";
 import Header from "../components/global/Header";
 import { Icon } from "@iconify/react";
 
