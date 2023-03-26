@@ -20,6 +20,7 @@ const App = () => {
       dispatch(setAuthenticatedUser(true));
       dispatch(setUser(response.profile));
       window.location.hash = "";
+      console.log(response);
     },
     authority: "https://au.stellaraesthetics.in/",
     clientId: "206769574157323753@authentication_with_react",
