@@ -9,6 +9,8 @@ import {
 
 const Header = ({ title }) => {
   const darkMode = useSelector((state) => state.global.darkMode);
+  const picture = useSelector((state) => state.auth?.user?.profile?.picture);
+  console.log(picture);
   const dispatch = useDispatch();
 
   const toggleThemeMode = () => dispatch(toggleDarkMode());
@@ -37,9 +39,19 @@ const Header = ({ title }) => {
         <Link className="block p-2 hover:bg-paper rounded-full">
           <Icon icon="basil:user-plus-outline" className="text-2xl" />
         </Link>
-        <div className="rounded-full h-full w-auto border uppercase p-2">
-          ac
-        </div>
+        <Link
+          to="/user"
+          className="rounded-full h-[50px] w-[50px] border uppercase"
+        >
+          {picture && (
+            <img
+              src={picture}
+              className="w-full rounded-full h-full object-cover"
+              width={100}
+              height={100}
+            />
+          )}
+        </Link>
       </div>
     </header>
   );

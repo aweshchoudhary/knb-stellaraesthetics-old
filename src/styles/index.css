@@ -781,12 +781,20 @@ body {
   height: 10%;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
 .h-\[30px\] {
   height: 30px;
 }
 
 .h-\[40px\] {
   height: 40px;
+}
+
+.h-\[50px\] {
+  height: 50px;
 }
 
 .h-\[60px\] {
@@ -821,6 +829,10 @@ body {
   width: 1rem;
 }
 
+.w-\[100px\] {
+  width: 100px;
+}
+
 .w-\[25\%\] {
   width: 25%;
 }
@@ -845,12 +857,12 @@ body {
   width: 40px;
 }
 
-.w-\[60\%\] {
-  width: 60%;
+.w-\[50px\] {
+  width: 50px;
 }
 
-.w-auto {
-  width: auto;
+.w-\[60\%\] {
+  width: 60%;
 }
 
 .w-full {
@@ -873,6 +885,10 @@ body {
   flex-shrink: 0;
 }
 
+.grow-0 {
+  flex-grow: 0;
+}
+
 .-translate-x-1\/2 {
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -885,10 +901,6 @@ body {
 
 .cursor-move {
   cursor: move;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 
 .flex-col {
@@ -1006,6 +1018,11 @@ body {
   background-color: transparent;
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -1091,6 +1108,11 @@ body {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-lg {

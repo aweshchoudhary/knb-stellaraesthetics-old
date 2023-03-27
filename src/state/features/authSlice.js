@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: {},
+  user:
+    JSON.parse(
+      sessionStorage.getItem(
+        "oidc.user:https://au.stellaraesthetics.in/:206769574157323753@authentication_with_react"
+      )
+    ) || {},
   isUserAuthenticated: false,
 };
 
@@ -9,8 +14,8 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAuthenticatedUser(state, action) {
-      state.isUserAuthenticated = Boolean(action.payload);
+    setAuthenticatedUser(state) {
+      state.isUserAuthenticated = !state.isUserAuthenticated;
     },
     setUser(state, action) {
       state.user = action.payload;

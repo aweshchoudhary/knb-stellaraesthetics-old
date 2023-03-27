@@ -1,9 +1,5 @@
-import { Icon } from "@iconify/react";
-import { useEffect, useRef, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { addDeal } from "../../state/features/dealSlice";
 
 const AddDeal = ({ setIsOpen }) => {
@@ -30,7 +26,7 @@ const AddDeal = ({ setIsOpen }) => {
       type: "work",
       prefix: "+91",
     },
-    closeDate: new Date(),
+    closeDate: null,
   });
   const colors = useRef([
     "red-500",
@@ -212,8 +208,9 @@ const AddDeal = ({ setIsOpen }) => {
               <label htmlFor="close-date" className="text-textColor block mb-2">
                 Expected Close Date
               </label>
-              <DatePicker
-                selected={dealData.closeDate}
+              <input
+                type="date"
+                id="close-date"
                 onChange={(date) =>
                   setDealData((prev) => {
                     return {
@@ -230,7 +227,7 @@ const AddDeal = ({ setIsOpen }) => {
                     };
                   })
                 }
-                className="input cursor-pointer"
+                className="input"
               />
             </div>
           </div>

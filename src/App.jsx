@@ -12,20 +12,24 @@ import Login from "./pages/auth/Login";
 import { setAuthenticatedUser, setUser } from "./state/features/authSlice";
 import { useDispatch } from "react-redux";
 import { AuthProvider } from "oidc-react";
+import User from "./pages/User";
 
 const App = () => {
+  const isUserAuthenticated = useSelector(
+    (state) => state.auth.isUserAuthenticated
+  );
   const dispatch = useDispatch();
   const zitadelConfig = {
     onSignIn: async (response) => {
-      dispatch(setAuthenticatedUser(true));
-      dispatch(setUser(response.profile));
+      dispatch(setAuthenticatedUser());
+      dispatch(setUser(response));
       window.location.hash = "";
-      console.log(response);
+      console.log(isUserAuthenticated);
     },
     authority: "https://au.stellaraesthetics.in/",
     clientId: "206769574157323753@authentication_with_react",
     responseType: "code",
-    redirectUri: "https://knb-stellaraesthetics.netlify.app/dashboard",
+    redirectUri: "http://localhost:5173/dashboard",
     scope: "openid profile email",
   };
   return (
@@ -39,6 +43,7 @@ const App = () => {
             <Route path="/activities" element={<Activities />} />
             <Route path="/products" element={<Products />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/user" element={<User />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/login" element={<Login />} />
