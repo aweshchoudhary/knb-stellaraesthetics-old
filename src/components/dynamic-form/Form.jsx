@@ -49,30 +49,40 @@ const Form = () => {
         ) : null}
         {customFields.map((input, index) => {
           return input.mainType === "input" ? (
-            <input
-              key={index}
-              name={input.name}
-              id={input.name}
-              value={input.value}
-              className="input my-1"
-              type={input.subType}
-              placeholder={input.placeholder || input.name}
-              onChange={(e) =>
-                changeValue(index, e.target.name, e.target.value)
-              }
-            />
+            <>
+              <label htmlFor={input.name} className="block mb-1">
+                {input.name}
+              </label>
+              <input
+                key={index}
+                name={input.name}
+                id={input.name}
+                value={input.value}
+                className="input my-1"
+                type={input.subType}
+                placeholder={input.placeholder || input.name}
+                onChange={(e) =>
+                  changeValue(index, e.target.name, e.target.value)
+                }
+              />
+            </>
           ) : (
-            <textarea
-              key={index}
-              className="input my-1"
-              name={input.name}
-              id={input.name}
-              value={input.value}
-              placeholder={input.placeholder || input.name}
-              onChange={(e) =>
-                changeValue(index, e.target.name, e.target.value)
-              }
-            />
+            <>
+              <label htmlFor={input.name} className="block mb-1">
+                {input.name}
+              </label>
+              <textarea
+                key={index}
+                className="input my-1"
+                name={input.name}
+                id={input.name}
+                value={input.value}
+                placeholder={input.placeholder || input.name}
+                onChange={(e) =>
+                  changeValue(index, e.target.name, e.target.value)
+                }
+              />
+            </>
           );
         })}
       </div>
@@ -118,6 +128,9 @@ const Form = () => {
                 </option>
                 <option className="text-black" value="date">
                   Date
+                </option>
+                <option className="text-black" value="file">
+                  File
                 </option>
               </select>
             )}
