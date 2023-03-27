@@ -655,6 +655,15 @@ body {
   padding-bottom: 0.5rem;
   outline: 2px solid transparent;
   outline-offset: 2px;
+  outline-width: 0px;
+}
+
+.input:hover {
+  border-color: var(--text-color);
+}
+
+.input:focus {
+  border-color: var(--text-color);
 }
 
 .sr-only {
@@ -708,16 +717,8 @@ body {
   left: 50%;
 }
 
-.right-1 {
-  right: 0.25rem;
-}
-
 .top-0 {
   top: 0px;
-}
-
-.top-1 {
-  top: 0.25rem;
 }
 
 .top-1\/2 {
@@ -751,6 +752,10 @@ body {
 
 .mb-3 {
   margin-bottom: 0.75rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
 }
 
 .mt-5 {
@@ -793,12 +798,12 @@ body {
   height: 40px;
 }
 
-.h-\[50px\] {
-  height: 50px;
-}
-
 .h-\[60px\] {
   height: 60px;
+}
+
+.h-\[70px\] {
+  height: 70px;
 }
 
 .h-\[80\%\] {
@@ -837,8 +842,8 @@ body {
   width: 25%;
 }
 
-.w-\[250px\] {
-  width: 250px;
+.w-\[260px\] {
+  width: 260px;
 }
 
 .w-\[300px\] {
@@ -855,10 +860,6 @@ body {
 
 .w-\[40px\] {
   width: 40px;
-}
-
-.w-\[50px\] {
-  width: 50px;
 }
 
 .w-\[60\%\] {
@@ -885,10 +886,6 @@ body {
   flex-shrink: 0;
 }
 
-.grow-0 {
-  flex-grow: 0;
-}
-
 .-translate-x-1\/2 {
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -899,8 +896,8 @@ body {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cursor-move {
-  cursor: move;
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .flex-col {
@@ -921,10 +918,6 @@ body {
 
 .justify-between {
   justify-content: space-between;
-}
-
-.gap-0 {
-  gap: 0px;
 }
 
 .gap-1 {
@@ -1110,11 +1103,6 @@ body {
   line-height: 2.25rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1276,6 +1264,10 @@ body {
 
   .md\:w-\[calc\(100\%-90px\)\] {
     width: calc(100% - 90px);
+  }
+
+  .md\:p-10 {
+    padding: 2.5rem;
   }
 
   .md\:text-5xl {

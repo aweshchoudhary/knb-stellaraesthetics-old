@@ -15,7 +15,7 @@ const Header = ({ title }) => {
 
   const toggleThemeMode = () => dispatch(toggleDarkMode());
   return (
-    <header className="h-[60px] px-5 border-b flex items-center justify-between">
+    <header className="px-5 h-[60px] border-b flex items-center justify-between">
       <div className="flex items-center gap-4">
         <button
           onClick={() => dispatch(toggleMobileOpen())}
@@ -41,14 +41,14 @@ const Header = ({ title }) => {
         </Link>
         <Link
           to="/user"
-          className="rounded-full h-[50px] w-[50px] border uppercase"
+          className="rounded-full h-[40px] w-[40px] border uppercase"
         >
           {picture && (
             <img
               src={picture}
               className="w-full rounded-full h-full object-cover"
-              width={100}
-              height={100}
+              width={50}
+              height={50}
             />
           )}
         </Link>

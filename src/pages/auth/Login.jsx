@@ -3,16 +3,13 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const isUserAuthenticated = useSelector(
-    (state) => state.auth.isUserAuthenticated
-  );
+  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
-  console.log(isUserAuthenticated);
   useEffect(() => {
-    if (isUserAuthenticated) {
+    if (user) {
       navigate("/dashboard", { replace: true });
     }
-  }, [isUserAuthenticated]);
+  }, [user]);
   return (
     <section className="flex h-screen items-center justify-center">
       <div>

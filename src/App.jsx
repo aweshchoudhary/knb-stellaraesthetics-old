@@ -1,5 +1,8 @@
-import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "./state/features/authSlice";
+import { AuthProvider } from "oidc-react";
+
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout/Layout";
 import Deals from "./pages/Deals";
@@ -7,24 +10,17 @@ import Activities from "./pages/Activities";
 import Products from "./pages/Products";
 import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
-import { useSelector } from "react-redux";
 import Login from "./pages/auth/Login";
-import { setAuthenticatedUser, setUser } from "./state/features/authSlice";
-import { useDispatch } from "react-redux";
-import { AuthProvider } from "oidc-react";
 import User from "./pages/User";
 
 const App = () => {
-  const isUserAuthenticated = useSelector(
-    (state) => state.auth.isUserAuthenticated
-  );
+  let user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
+
   const zitadelConfig = {
     onSignIn: async (response) => {
-      dispatch(setAuthenticatedUser());
       dispatch(setUser(response));
       window.location.hash = "";
-      console.log(isUserAuthenticated);
     },
     authority: "https://au.stellaraesthetics.in/",
     clientId: "206769574157323753@authentication_with_react",
@@ -32,6 +28,7 @@ const App = () => {
     redirectUri: "http://localhost:5173/dashboard",
     scope: "openid profile email",
   };
+  console.log(user);
   return (
     <AuthProvider {...zitadelConfig}>
       <BrowserRouter>

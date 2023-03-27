@@ -1,19 +1,21 @@
 import Card from "../global/Card";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { DragDropContext } from "react-beautiful-dnd";
+import { useSelector, useDispatch } from "react-redux";
 import { reorderDeals, setStage } from "../../state/features/dealSlice";
 import { updateDealStage } from "../../state/features/dealStagesSlice";
 import { Icon } from "@iconify/react";
 import AddDeal from "../global/AddDeal";
 import Model from "../models/Model";
 import { useState } from "react";
+import Column from "./Column";
+import Row from "./Row";
 
 const Kanban = ({ setIsKanBanEdit }) => {
   const dispatch = useDispatch();
   const deals = useSelector((state) => state.deals.data);
   const dealStages = useSelector((state) => state.dealStages.data);
-  const [isModelOpen, setModelOpen] = useState(false);
+  const [editDealModelDisplay, setEditDealModelDisplay] = useState(false);
+  const [addDealModelDisplay, setAddDealModelDisplay] = useState(false);
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -53,12 +55,18 @@ const Kanban = ({ setIsKanBanEdit }) => {
   };
   return (
     <>
-      <Model isOpen={isModelOpen} setIsOpen={setModelOpen}>
-        <AddDeal setIsOpen={setModelOpen} />
-      </Model>
+      <Models
+        editDealModelDisplay={editDealModelDisplay}
+        setEditDealModelDisplay={setEditDealModelDisplay}
+        addDealModelDisplay={addDealModelDisplay}
+        setAddDealModelDisplay={setAddDealModelDisplay}
+      />
       <section className="h-[60px] flex items-center justify-between px-5 py-3 border-b">
         <div>
-          <button onClick={() => setModelOpen(true)} className="btn-filled">
+          <button
+            onClick={() => setAddDealModelDisplay(true)}
+            className="btn-filled"
+          >
             <Icon icon={"uil:plus"} className="text-xl" />
             Deal
           </button>
@@ -93,76 +101,49 @@ const Kanban = ({ setIsKanBanEdit }) => {
             {dealStages &&
               dealStages.map((stage, index) => {
                 return (
-                  <div
-                    className={
-                      "border-r shrink-0 flex flex-col min-w-[293px] flex-1"
-                    }
-                    key={stage.id}
-                  >
-                    <header
-                      className={
-                        "border-b px-5 py-2 sticky top-0 left-0 text-white" +
-                        " bg-primary"
-                      }
-                    >
-                      <h2 className="font-medium capitalize">{stage.name}</h2>
-                      <p className="text-sm">
-                        Rs{stage.amount} - {stage.deals} Deals
-                      </p>
-                    </header>
-                    <div className="flex-1">
-                      <Droppable droppableId={stage.id} key={stage.id}>
-                        {(provided, snapshot) => {
-                          return (
-                            <div
-                              {...provided.droppableProps}
-                              ref={provided.innerRef}
-                              className={`p-2 h-full ${
-                                snapshot.isDraggingOver ? "bg-paper" : "bg-bg"
-                              }`}
-                            >
-                              {deals.map((item, i) => {
-                                return (
-                                  item?.stage === stage.id && (
-                                    <Draggable
-                                      key={item.id}
-                                      draggableId={item.id}
-                                      index={i}
-                                    >
-                                      {(provided, snapshot) => {
-                                        return (
-                                          <div
-                                            ref={provided.innerRef}
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            className="relative"
-                                          >
-                                            <Card data={item} />
-                                            {/* <button
-                                              {...provided.dragHandleProps}
-                                              className="cursor-move text-2xl absolute top-1 right-1 hover:bg-paper p-2 rounded-full"
-                                            >
-                                              <Icon icon="mdi:cursor-move" />
-                                            </button> */}
-                                          </div>
-                                        );
-                                      }}
-                                    </Draggable>
-                                  )
-                                );
-                              })}
-                              {provided.placeholder}
-                            </div>
-                          );
-                        }}
-                      </Droppable>
-                    </div>
-                  </div>
+                  <Column stage={stage} key={index}>
+                    {deals.map((item, i) => {
+                      return (
+                        item?.stage === stage.id && (
+                          <Row itemId={item.id} index={i} key={i}>
+                            <Card
+                              setEditDealModelDisplay={setEditDealModelDisplay}
+                              data={item}
+                            />
+                          </Row>
+                        )
+                      );
+                    })}
+                  </Column>
                 );
               })}
           </DragDropContext>
         </div>
       </section>
+    </>
+  );
+};
+
+const Models = ({
+  editDealModelDisplay,
+  setEditDealModelDisplay,
+  addDealModelDisplay,
+  setAddDealModelDisplay,
+}) => {
+  return (
+    <>
+      <Model
+        title={"Add Deal"}
+        isOpen={addDealModelDisplay}
+        setIsOpen={setAddDealModelDisplay}
+      >
+        <AddDeal setIsOpen={setAddDealModelDisplay} />
+      </Model>
+      <Model
+        title={"Edit Deal"}
+        isOpen={editDealModelDisplay}
+        setIsOpen={setEditDealModelDisplay}
+      ></Model>
     </>
   );
 };

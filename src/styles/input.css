@@ -56,7 +56,7 @@ body {
   @apply px-4 py-2 text-textColor flex items-center gap-2 border rounded capitalize hover:bg-paper transition;
 }
 .input {
-  @apply border bg-transparent px-3 py-2 rounded w-full outline-none;
+  @apply border focus:border-textColor hover:border-textColor bg-transparent px-3 py-2 rounded w-full outline-0 outline-none;
 }
 
 @tailwind utilities;

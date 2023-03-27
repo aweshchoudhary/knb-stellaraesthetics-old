@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
 
-const Card = ({ data }) => {
+const Card = ({ data, setEditDealModelDisplay }) => {
   return data ? (
     <div
-      className={`min-h-[110px] w-full bg-bg border my-2 border-l-8 p-2  flex flex-col justify-between ${
+      onClick={() => setEditDealModelDisplay(true)}
+      className={`min-h-[110px] cursor-pointer w-full bg-bg border my-2 border-l-8 p-2  flex flex-col justify-between ${
         data.color ? `border-[${data.color}]` : null
       }`}
     >
