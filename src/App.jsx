@@ -25,7 +25,7 @@ const App = () => {
     authority: "https://au.stellaraesthetics.in/",
     clientId: "206769574157323753@authentication_with_react",
     responseType: "code",
-    redirectUri: "http://localhost:5173/dashboard",
+    redirectUri: "https://knb.stellaraesthetics.netlify.app/dashboard",
     scope: "openid profile email",
   };
   console.log(user);
