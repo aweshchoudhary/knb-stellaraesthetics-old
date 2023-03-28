@@ -14,7 +14,6 @@ import Login from "./pages/auth/Login";
 import User from "./pages/User";
 
 const App = () => {
-  let user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const zitadelConfig = {
@@ -25,10 +24,9 @@ const App = () => {
     authority: "https://au.stellaraesthetics.in/",
     clientId: "206769574157323753@authentication_with_react",
     responseType: "code",
-    redirectUri: "https://knb-stellaraesthetics.netlify.app/dashboard",
+    redirectUri: "http://localhost:5173/dashboard",
     scope: "openid profile email",
   };
-  console.log(user);
   return (
     <AuthProvider {...zitadelConfig}>
       <BrowserRouter>

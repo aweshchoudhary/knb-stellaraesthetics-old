@@ -234,7 +234,7 @@ const AddDeal = ({ setIsOpen }) => {
               />
             </div>
           </div>
-          <div className="sm:w-1/2 shrink-0 h-full p-3">
+          <div className="flex-1 h-full p-3">
             <div className="input-group mb-3">
               <label
                 htmlFor="personName"
