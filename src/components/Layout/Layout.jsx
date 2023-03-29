@@ -16,16 +16,14 @@ const Layout = () => {
     <div className="flex relative w-screen">
       <SideBar setIsOpen={setIsSideBarOpen} isOpen={isSideBarOpen} />
       <main
-        className={
-          isSideBarOpen
-            ? "md:w-[calc(100%-250px)] w-screen"
-            : "md:w-[calc(100%-90px)] w-screen"
-        }
-        // style={{
-        //   width: isSideBarOpen ? "calc(100% - 300px)" : "calc(100% - 90px)",
-        // }}
+        // className={
+        //   isSideBarOpen
+        //     ? "md:w-[calc(100%-250px)] w-screen border-collapse"
+        //     : "md:w-[calc(100%-90px)] w-screen border-collapse"
+        // }
+        className="flex-1"
       >
-        <article className="h-screen w-full overflow-y-auto">
+        <article className="h-screen overflow-y-auto">
           <Outlet />
         </article>
       </main>

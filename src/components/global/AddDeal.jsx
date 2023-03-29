@@ -45,7 +45,7 @@ const AddDeal = ({ setIsOpen }) => {
 
   return (
     <>
-      <div className="overflow-y-auto h-[80%]">
+      <div className="overflow-y-auto h-[calc(100%-110px)]">
         <form className="container sm:flex">
           <div className="sm:w-1/2 shrink-0 border-r h-full p-3">
             <div className="input-fname mb-3">
@@ -346,7 +346,7 @@ const AddDeal = ({ setIsOpen }) => {
           </div>
         </form>
       </div>
-      <footer className="py-2 px-5 h-[10%] bg-paper flex items-center justify-end gap-2">
+      <footer className="py-2 px-5 h-[60px] bg-paper flex items-center justify-end gap-2">
         <button className="btn-outlined" onClick={() => setIsOpen(false)}>
           cancel
         </button>

@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -43,7 +43,7 @@ const SideBar = ({ setIsOpen, isOpen }) => {
   const [active, setActive] = useState({});
   return (
     <aside
-      className={`${isOpen ? "w-[260px]" : "md:w-[90px] w-[300px]"} ${
+      className={`${isOpen ? "w-[230px]" : "md:w-[90px] w-[230px]"} ${
         isMobileOpen ? "left-0" : "md:left-0 -left-full"
       } border-r md:sticky absolute bg-bg z-50 top-0 left-0 h-screen shrink-0 transition-all`}
     >
@@ -52,9 +52,7 @@ const SideBar = ({ setIsOpen, isOpen }) => {
           "flex items-center justify-between px-5 h-[60px] border-b bg-primary text-white"
         }
       >
-        {isOpen && (
-          <h4 className="text-xl font-semibold">Stellar Aesthetics</h4>
-        )}
+        {isOpen && <h4 className=" font-semibold">Stellar Aesthetics</h4>}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           className="text-2xl ml-1 md:block hidden rounded-full m-0 p-1 hover:bg-slate-800"
@@ -81,9 +79,9 @@ const SideBar = ({ setIsOpen, isOpen }) => {
               <li key={i}>
                 <Link
                   to={item.link}
-                  className="flex items-center gap-5 hover:bg-paper px-4 py-3 my-2 rounded"
+                  className="flex items-center gap-3 hover:bg-paper px-4 py-3 rounded"
                 >
-                  <Icon icon={item.icon} className="text-2xl" />
+                  <Icon icon={item.icon} className="text-xl" />
                   {isOpen && <span>{item.label}</span>}
                 </Link>
               </li>

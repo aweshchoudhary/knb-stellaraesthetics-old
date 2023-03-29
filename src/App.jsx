@@ -5,7 +5,8 @@ import { AuthProvider } from "oidc-react";
 
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout/Layout";
-import Deals from "./pages/Deals";
+import Deals from "./pages/deals/Deals";
+import Deal from "./pages/deals/Deal";
 import Activities from "./pages/Activities";
 import Products from "./pages/Products";
 import Services from "./pages/Services";
@@ -35,6 +36,7 @@ const App = () => {
             <Route index element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/deals" element={<Deals />} />
+            <Route path="/deals/:id" element={<Deal />} />
             <Route path="/activities" element={<Activities />} />
             <Route path="/products" element={<Products />} />
             <Route path="/services" element={<Services />} />

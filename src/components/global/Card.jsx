@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
-const Card = ({ data, setEditDealModelDisplay }) => {
+const Card = ({ data }) => {
   return data ? (
-    <div
-      onClick={() => setEditDealModelDisplay(true)}
+    <Link
+      to="/deals/dasdf"
       className={`min-h-[110px] cursor-pointer w-full bg-bg border my-2 border-l-8 p-2  flex flex-col justify-between ${
         data.color ? `border-[${data.color}]` : null
       }`}
@@ -25,7 +26,7 @@ const Card = ({ data, setEditDealModelDisplay }) => {
           <span>{data.value.value}</span>
         </div>
       </div>
-    </div>
+    </Link>
   ) : null;
 };
 
