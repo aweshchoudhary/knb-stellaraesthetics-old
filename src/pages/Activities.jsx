@@ -4,29 +4,36 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { useState } from "react";
 import Header from "../components/global/Header";
+import Model from "../components/models/Model";
+import Activity from "../components/deal/Activity";
 
 const Activities = () => {
   const [events, setEvents] = useState([]);
+  const [selectedInfo, setSelectedInfo] = useState(null);
   const [weekendsVisible, setWeekendsVisible] = useState(true);
+  const [isActivityModelOpen, setIsActivityModelOpen] = useState(false);
+
   const handleWeekendsToggle = () => {
     setWeekendsVisible((prev) => !prev);
   };
 
   const handleDateSelect = (selectInfo) => {
-    const title = prompt("Please enter a new title for your event");
-    const calendarApi = selectInfo.view.calendar;
+    setIsActivityModelOpen(true);
+    setSelectedInfo(selectInfo);
+    // const title = prompt("Please enter a new title for your event");
+    // const calendarApi = selectInfo.view.calendar;
 
-    calendarApi.unselect(); // clear date selection
+    // calendarApi.unselect(); // clear date selection
 
-    if (title) {
-      calendarApi.addEvent({
-        id: String(Date.now()),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      });
-    }
+    // if (title) {
+    //   calendarApi.addEvent({
+    //     id: String(Date.now()),
+    //     title,
+    //     start: selectInfo.startStr,
+    //     end: selectInfo.endStr,
+    //     allDay: selectInfo.allDay,
+    //   });
+    // }
   };
 
   const handleEventClick = (clickInfo) => {
@@ -42,6 +49,7 @@ const Activities = () => {
   const handleEvents = (events) => {
     setEvents(events);
   };
+
   function renderEventContent(eventInfo) {
     return (
       <>
@@ -54,6 +62,13 @@ const Activities = () => {
   return (
     <>
       <Header title="Activities" />
+      <Model
+        isOpen={isActivityModelOpen}
+        setIsOpen={setIsActivityModelOpen}
+        title={"Activity"}
+      >
+        <Activity selectedInfo={selectedInfo} />
+      </Model>
       <section className="py-5 w-full px-5">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

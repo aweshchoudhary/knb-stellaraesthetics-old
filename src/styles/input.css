@@ -49,11 +49,19 @@ body {
   background: #555;
 }
 
+option{
+  @apply text-black
+}
+
+.toolbarClassName{
+  color:black !important;
+}
+
 .btn-filled {
   @apply capitalize border border-primary px-4 py-2 text-white flex items-center gap-2 bg-primary rounded hover:opacity-80 transition;
 }
 .btn-outlined {
-  @apply px-4 py-2 text-textColor flex items-center gap-2 border rounded capitalize hover:bg-paper transition;
+  @apply px-4 py-2 text-textColor flex items-center gap-2 border rounded capitalize hover:bg-paper transition disabled:text-paper disabled:hover:bg-transparent;
 }
 .input {
   @apply border focus:border-textColor hover:border-textColor bg-transparent px-3 py-2 rounded w-full outline-0 outline-none;

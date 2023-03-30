@@ -5,7 +5,7 @@ const Tabs = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   return (
     <section className="bg-bg">
-      <header className="flex">
+      <header className="flex border-b">
         {tabs.map((tab, index) => {
           return (
             <button
@@ -13,8 +13,8 @@ const Tabs = ({ tabs }) => {
               key={index}
               className={`${
                 tab.id === activeTab.id
-                  ? "border-primary bg-slate-50"
-                  : "hover:bg-gray-100 border-transparent hover:border-primary"
+                  ? "border-textColor"
+                  : "border-transparent hover:border-textColor"
               } px-4 py-3 border-b-2 transition flex-1 flex items-center gap-2 justify-center capitalize`}
             >
               <Icon icon={tab.icon} />

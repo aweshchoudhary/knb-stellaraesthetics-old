@@ -1,8 +1,6 @@
-import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addDeal } from "../../state/features/dealSlice";
-import Form from "../dynamic-form/Form";
 
 const AddDeal = ({ setIsOpen }) => {
   const stages = useSelector((state) => state.dealStages.data);
@@ -342,7 +340,6 @@ const AddDeal = ({ setIsOpen }) => {
                 </select>
               </div>
             </div>
-            <Form />
           </div>
         </form>
       </div>

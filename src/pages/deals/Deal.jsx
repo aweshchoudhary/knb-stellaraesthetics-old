@@ -1,9 +1,11 @@
 import { Icon } from "@iconify/react";
-import Accordian, { AccordianBody } from "../../components/global/Accordian";
 import Header from "../../components/global/Header";
 import Tabs from "../../components/global/Tabs";
 import Notes from "../../components/deal/Notes";
 import Activity from "../../components/deal/Activity";
+import File from "../../components/deal/File";
+import Email from "../../components/deal/Email";
+import DealSideBar from "../../components/deal/DealSideBar";
 
 const Deal = () => {
   const tabs = [
@@ -19,16 +21,26 @@ const Deal = () => {
       icon: "material-symbols:calendar-month-outline",
       component: <Activity />,
     },
+    {
+      id: 3,
+      name: "File",
+      icon: "material-symbols:attach-file",
+      component: <File />,
+    },
+    {
+      id: 4,
+      name: "Email",
+      icon: "uil:envelope",
+      component: <Email />,
+    },
   ];
   return (
     <>
       <Header title={"Deal"} />
       <section className="header border-b border-collapse px-5 py-3 h-[120px]">
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center justify-between mb-3">
           <div>
-            <h1 className="md:text-3xl text-2xl font-semibold">
-              Example Company Deal
-            </h1>
+            <h1 className="text-2xl font-semibold">Example Company Deal</h1>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex gap-1">
@@ -54,53 +66,8 @@ const Deal = () => {
           </button>
         </div>
       </section>
-      <section className="flex h-[calc(100%-190px)]">
-        <aside className="w-[350px] shrink-0 border-r h-full overflow-auto">
-          <Accordian title={"Summary"}>
-            <AccordianBody>
-              <div>
-                <div className="money/value flex items-center gap-4 mb-4">
-                  <Icon icon="ph:money" className="text-2xl" />
-                  <p>10,000 Rs</p>
-                </div>
-                <div className="expected-close-date flex items-center gap-4 mb-4">
-                  <Icon icon="bx:calendar" className="text-2xl" />
-                  <p>29 March, 2023</p>
-                </div>
-                <div className="expected-close-date flex items-center gap-4 mb-4">
-                  <Icon icon="uil:user" className="text-2xl" />
-                  <p>Awesh Choudhary</p>
-                </div>
-                <div className="expected-close-date flex items-center gap-4 mb-4">
-                  <Icon icon="uil:building" className="text-2xl" />
-                  <p>Stellar Aesthetics</p>
-                </div>
-              </div>
-            </AccordianBody>
-          </Accordian>
-          <Accordian title={"Overview"}>
-            <AccordianBody>
-              <div>
-                <div className="money/value font-medium flex items-center justify-between mb-3">
-                  <p>Deal Age:</p>
-                  <p>29 Days</p>
-                </div>
-                <div className="money/value flex items-center justify-between mb-3">
-                  <p>Inactive (Days):</p>
-                  <p>25 Days</p>
-                </div>
-                <div className="money/value flex items-center justify-between mb-3">
-                  <p>Created:</p>
-                  <p>1 March, 2023</p>
-                </div>
-                <div className="money/value flex items-center justify-between mb-3">
-                  <p>Closing Date:</p>
-                  <p>29 March, 2023</p>
-                </div>
-              </div>
-            </AccordianBody>
-          </Accordian>
-        </aside>
+      <section className="flex min-h-[calc(100%-190px)]">
+        <DealSideBar />
         <div className="flex-1 p-5 bg-paper">
           <Tabs tabs={tabs} />
         </div>
